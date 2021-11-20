@@ -1,20 +1,17 @@
 import {Dispatch} from "react";
 import axios from "axios";
 import {
-    fetchMessagesSuccess,
-    postNewMessageSuccess,
-    showUserNameModalAction,
-    hideUserNameModalAction,
+    fetchMessagesAction,
+    postNewMessageAction,
     setUserNameAction,
 } from "./actions";
-import {use} from "express/lib/router";
 
 export const fetchMessages = () => {
     return (dispatch) => {
         axios
             .get("http://localhost:8080/messages")
             .then((response) => {
-                dispatch(fetchMessagesSuccess(response.data));
+                dispatch(fetchMessagesAction(response.data));
             })
     };
 };
@@ -24,18 +21,9 @@ export const postNewMessage = (message) => {
         axios
             .post("http://localhost:8080/message", {message: message})
             .then((response) => {
-                dispatch(postNewMessageSuccess(response.data));
+                dispatch(postNewMessageAction(response.data));
             })
     };
-};
-
-
-export const showUserNameModal = () => {
-    return (dispatch) => dispatch(showUserNameModalAction());
-};
-
-export const hideUserNameModal = () => {
-    return (dispatch) => dispatch(hideUserNameModalAction());
 };
 
 export const setUserName = (userName) => {

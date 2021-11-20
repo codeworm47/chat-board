@@ -1,34 +1,24 @@
 import "./App.css";
-import MessageListPane from "./components/message-list-pane/messageListPane";
-import Header from "./components/utility-components/header/header";
-import EditorPanel from "./components/editor-panel/editorPanel";
+import MessageListPane from "./components/MessageListPane/messageListPane";
+import Header from "./hoc/header/Header";
+import EditorPanel from "./components/EditorPanel/editorPanel";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {Modal, Container, Row} from 'react-bootstrap';
 import {
     fetchMessages,
     postNewMessage,
-    showUserNameModal,
-    hideUserNameModal, setUserName
+    setUserName
 } from "./store/actionCreator";
 
 const App = (props) => {
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(showUserNameModal());
-
-    }, []);
-    //const [modalState, setModalState] = useState(true);
+    const [showUserNameModal, setShowUserNameModal] = useState(true);
     const state = useSelector((state) => state);
 
-    // const handleShow = () => {
-    //     //setModalState(true);
-    // }
-
     const handleClose = () => {
+        setShowUserNameModal(false);
         dispatch(fetchMessages());
-
-        dispatch(hideUserNameModal());
     }
 
     const handleChange = (e) => {
@@ -37,7 +27,7 @@ const App = (props) => {
 
     return (
         <Container>
-            <Modal show={state.showUserNameModel}>
+            <Modal show={showUserNameModal}>
                 <Modal.Body>
                     <Row>
                         <p>Please choose a user name.</p>

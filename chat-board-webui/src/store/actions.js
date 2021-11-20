@@ -1,30 +1,16 @@
 import * as channelTypes from "./constants";
 
-export function fetchMessagesSuccess(messages) {
+export function fetchMessagesAction(messages) {
   return {
     type: channelTypes.ACTION_FETCH_MESSAGES_SUCCESS,
     payload: messages,
   };
 }
 
-export function postNewMessageSuccess(channels) {
+export function postNewMessageAction(message) {
   return {
     type: channelTypes.ACTION_POST_NEW_MESSAGE,
-    payload: channels,
-  };
-}
-
-export function showUserNameModalAction() {
-  return {
-    type: channelTypes.ACTION_SHOW_USERNAME_MODAL,
-    payload: true,
-  };
-}
-
-export function hideUserNameModalAction() {
-  return {
-    type: channelTypes.ACTION_SHOW_USERNAME_MODAL,
-    payload: false,
+    payload: message,
   };
 }
 

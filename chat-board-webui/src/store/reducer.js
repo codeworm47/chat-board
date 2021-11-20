@@ -15,11 +15,6 @@ const channelListReducer = (
                 ...state,
                 data: action.payload
             };
-        case actionTypes.ACTION_SHOW_USERNAME_MODAL:
-            return {
-                ...state,
-                showUserNameModel: action.payload
-            };
         case actionTypes.ACTION_SET_USERNAME:
             return {
                 ...state,
