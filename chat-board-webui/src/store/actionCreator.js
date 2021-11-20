@@ -6,7 +6,7 @@ import {
     showUserNameModalAction,
     hideUserNameModalAction,
     setUserNameAction,
-} from "./channelActions";
+} from "./actions";
 import {use} from "express/lib/router";
 
 export const fetchMessages = () => {

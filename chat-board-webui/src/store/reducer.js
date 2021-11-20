@@ -1,26 +1,26 @@
-import * as actionTypes from "./channelTypes";
-import {initialState} from "../States";
+import * as actionTypes from "./constants";
+import {initialState} from "./initialStates";
 
 const channelListReducer = (
     state = initialState, action
 ) => {
     switch (action.type) {
-        case actionTypes.FETCH_MESSAGES_SUCCESS:
+        case actionTypes.ACTION_FETCH_MESSAGES_SUCCESS:
             return {
                 ...state,
                 data: action.payload
             };
-        case actionTypes.POST_NEW_MESSAGE:
+        case actionTypes.ACTION_POST_NEW_MESSAGE:
             return {
                 ...state,
                 data: action.payload
             };
-        case actionTypes.SHOW_USERNAME_MODAL:
+        case actionTypes.ACTION_SHOW_USERNAME_MODAL:
             return {
                 ...state,
                 showUserNameModel: action.payload
             };
-        case actionTypes.SET_USERNAME:
+        case actionTypes.ACTION_SET_USERNAME:
             return {
                 ...state,
                 userName: action.payload

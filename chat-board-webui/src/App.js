@@ -10,7 +10,7 @@ import {
     postNewMessage,
     showUserNameModal,
     hideUserNameModal, setUserName
-} from "./redux/channel/channelActionCreator";
+} from "./store/actionCreator";
 
 const App = (props) => {
     const dispatch = useDispatch();
