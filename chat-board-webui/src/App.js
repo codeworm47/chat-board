@@ -13,12 +13,11 @@ import {
 
 const App = (props) => {
     const dispatch = useDispatch();
-    //fetch channel list at initialization of the Navigation Panel
     useEffect(() => {
         dispatch(fetchMessages());
     }, []);
     return (
-        <ContainerDiv className={"container"}>
+        <ContainerDiv>
             <Row>
                 <Header title="Chat board"/>
             </Row>
