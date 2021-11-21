@@ -4,18 +4,19 @@ import Header from "./hoc/header/Header";
 import EditorPanel from "./components/EditorPanel/editorPanel";
 import UserNameModal from "./components/UserNameModal/UserNameModal"
 import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
+import {useState, useContext} from "react";
 import {Container, Row} from 'react-bootstrap';
+import {WebSocketContext} from './WebSocket'
 import {
     fetchMessages,
-    postNewMessage,
-    setUserName
+    setUserName,
 } from "./store/actionCreator";
 
-const App = (props) => {
+const App = () => {
     const dispatch = useDispatch();
     const [showUserNameModal, setShowUserNameModal] = useState(true);
     const state = useSelector((state) => state);
+    const ws = useContext(WebSocketContext);
 
     const handleClose = () => {
         setShowUserNameModal(false);
@@ -24,6 +25,13 @@ const App = (props) => {
 
     const handleChange = (e) => {
         dispatch(setUserName(e.target.value))
+    }
+
+    const handleSend = (value) => {
+        let chat = {date: "", text: value, username: state.userName}
+       // socket.emit('chat', chat);
+        //dispatch(postNewMessage(chat))
+        ws.sendMessage(chat);
     }
 
     return (
@@ -42,12 +50,7 @@ const App = (props) => {
                 <div className="col-9 bg-light p-2 border border-primary">
                     <MessageListPane messages={state.data} userName={state.userName}/>
                     <EditorPanel
-                        handleSend={(value) => {
-                            dispatch(
-                                postNewMessage(
-                                    {date: "", text: value, username: state.userName}
-                                ))
-                        }}>
+                        handleSend={handleSend}>
                     </EditorPanel>
                 </div>
             </Row>

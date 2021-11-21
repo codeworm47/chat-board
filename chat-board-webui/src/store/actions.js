@@ -1,22 +1,20 @@
-import * as channelTypes from "./constants";
-
-export function fetchMessagesAction(messages) {
+import * as consts from "./constants";
+export function fetchAllMessagesAction(messages) {
   return {
-    type: channelTypes.ACTION_FETCH_MESSAGES_SUCCESS,
+    type: consts.ACTION_FETCH_ALL_MESSAGES,
     payload: messages,
   };
 }
-
-export function postNewMessageAction(message) {
+export function receiveNewMessageAction(message) {
   return {
-    type: channelTypes.ACTION_POST_NEW_MESSAGE,
+    type: consts.ACTION_RECEIVE_NEW_MESSAGE,
     payload: message,
   };
 }
 
 export function setUserNameAction(userName) {
   return {
-    type: channelTypes.ACTION_SET_USERNAME,
+    type: consts.ACTION_SET_USERNAME,
     payload: userName,
   };
 }

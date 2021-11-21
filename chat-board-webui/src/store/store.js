@@ -1,14 +1,12 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-//import logger from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
-import channelListReducer from "./reducer";
+import ChatBoardReducer from "./reducer";
 
 const store = createStore(
-  channelListReducer,
+  ChatBoardReducer,
   composeWithDevTools(
     applyMiddleware(
-      //logger,
       thunk
     )
   )

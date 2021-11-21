@@ -1,9 +1,8 @@
-import {Dispatch} from "react";
 import axios from "axios";
 import {
-    fetchMessagesAction,
-    postNewMessageAction,
+    fetchAllMessagesAction,
     setUserNameAction,
+    receiveNewMessageAction
 } from "./actions";
 
 export const fetchMessages = () => {
@@ -11,21 +10,18 @@ export const fetchMessages = () => {
         axios
             .get("http://localhost:8080/messages")
             .then((response) => {
-                dispatch(fetchMessagesAction(response.data));
-            })
-    };
-};
-
-export const postNewMessage = (message) => {
-    return (dispatch) => {
-        axios
-            .post("http://localhost:8080/message", {message: message})
-            .then((response) => {
-                dispatch(postNewMessageAction(response.data));
+                dispatch(fetchAllMessagesAction(response.data));
             })
     };
 };
 
 export const setUserName = (userName) => {
     return (dispatch) => dispatch(setUserNameAction(userName));
+};
+
+
+export const receiveNewMessage = (message) => {
+    return (dispatch) => {
+        dispatch(receiveNewMessageAction(message));
+    };
 };

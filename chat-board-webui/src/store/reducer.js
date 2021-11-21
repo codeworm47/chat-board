@@ -1,16 +1,11 @@
 import * as actionTypes from "./constants";
 import {initialState} from "./initialStates";
 
-const channelListReducer = (
+const ChatBoardReducer = (
     state = initialState, action
 ) => {
     switch (action.type) {
-        case actionTypes.ACTION_FETCH_MESSAGES_SUCCESS:
-            return {
-                ...state,
-                data: action.payload
-            };
-        case actionTypes.ACTION_POST_NEW_MESSAGE:
+        case actionTypes.ACTION_FETCH_ALL_MESSAGES:
             return {
                 ...state,
                 data: action.payload
@@ -20,8 +15,15 @@ const channelListReducer = (
                 ...state,
                 userName: action.payload
             };
+
+        case actionTypes.ACTION_RECEIVE_NEW_MESSAGE:
+            return {
+                ...state,
+                data: [...state.data, action.payload]
+            };
+        default:
+            return initialState;
     }
-    return state;
 };
 
-export default channelListReducer;
+export default ChatBoardReducer;
