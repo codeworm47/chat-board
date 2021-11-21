@@ -1,4 +1,5 @@
 import React from "react";
+import "./MessageListItem.css"
 
 const messageListItem = (props) => (
     <li key={props.key} className={props.userName === props.messageUserName ? "my-message" : null}>

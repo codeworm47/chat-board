@@ -1,10 +1,11 @@
 import "./App.css";
-import MessageListPane from "./components/MessageListPane/messageListPane";
+import MessageListPane from "./components/MessageListPane/MessageListPane";
 import Header from "./hoc/header/Header";
 import EditorPanel from "./components/EditorPanel/editorPanel";
+import UserNameModal from "./components/UserNameModal/UserNameModal"
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {Modal, Container, Row} from 'react-bootstrap';
+import {useState} from "react";
+import {Container, Row} from 'react-bootstrap';
 import {
     fetchMessages,
     postNewMessage,
@@ -27,28 +28,19 @@ const App = (props) => {
 
     return (
         <Container>
-            <Modal show={showUserNameModal}>
-                <Modal.Body>
-                    <Row>
-                        <p>Please choose a user name.</p>
-                    </Row>
-                    <Row>
-                        <input type="text" value={state.userName} onChange={handleChange}/>
-                    </Row>
-                    <Row>
-                        <button type="button" className="btn btn-primary"
-                                onClick={handleClose}
-                                disabled={state.userName === ""}>
-                            Continue </button>
-                    </Row>
-                </Modal.Body>
-            </Modal>
+            <UserNameModal
+                showUserNameModal={showUserNameModal}
+                userName={state.userName}
+                handleChange={handleChange}
+                handleClose={handleClose}
+            />
+
             <Row>
                 <Header title="Chat board"/>
             </Row>
             <Row>
                 <div className="col-9 bg-light p-2 border border-primary">
-                    <MessageListPane/>
+                    <MessageListPane messages={state.data} userName={state.userName}/>
                     <EditorPanel
                         handleSend={(value) => {
                             dispatch(
