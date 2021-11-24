@@ -1,18 +1,20 @@
 version: '3.8'
 services:
-  mongodb:
-    container_name: chat-board-mongodb2
-    image: mongo:latest
-    hostname: mongodb
+  api:
+    container_name: chatboard-api
+    image: chatboard-api:latest
+    build:
+      context: ./api
+      dockerfile: ./Dockerfile
+#    command:
+#      - cd /app/target
+#      - java -jar chatboard-0.0.1-SNAPSHOT.jar
+#    env_file:
+#      - /root/tradepal/docker/app/.env
+    restart: always
     volumes:
-      - ./.docker/mongodb/mongod.conf:/etc/mongod.conf
-      - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
-      - ./.docker/mongodb/data/db/:/data/db/
-      - ./.docker/mongodb/data/log/:/var/log/mongodb/
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: "sa"
-      MONGO_INITDB_ROOT_PASSWORD: "123"
-      MONGO_INITDB_DATABASE: "config"
+      - ../chat-board-api:/app/
     ports:
-      - "27018:27017"
-    command: ["-f", "/etc/mongod.conf/mongod.conf"]
+      - "8888:8888"
+      - "8085:8085"
+      - "9091:9091"

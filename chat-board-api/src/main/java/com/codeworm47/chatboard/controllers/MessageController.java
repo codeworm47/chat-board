@@ -5,7 +5,6 @@ import com.codeworm47.chatboard.services.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/messages")
 public class MessageController {
@@ -14,7 +13,7 @@ public class MessageController {
     MessageRepository messageRepository;
 
     @GetMapping
-    public Iterable<Message> get(){
+    public Iterable<Message> get() {
 //        List<MessageViewModel> res = new ArrayList<>();
 //        ObjectMapper mapper = new ObjectMapper();
 //        messageRepository.findAll().forEach(m-> {
@@ -26,7 +25,7 @@ public class MessageController {
     }
 
     @GetMapping(value = "/{id}")
-    public Message get(@PathVariable Long id){
+    public Message get(@PathVariable Long id) {
 //        List<MessageViewModel> res = new ArrayList<>();
 //        ObjectMapper mapper = new ObjectMapper();
 //        messageRepository.findAll().forEach(m-> {
@@ -36,8 +35,9 @@ public class MessageController {
         return messageRepository.findById(id).get();
     }
 
+
     @PostMapping
-    public Message create(@RequestBody Message message){
+    public Message create(@RequestBody Message message) {
         return messageRepository.save(message);
     }
 
