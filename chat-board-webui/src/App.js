@@ -28,9 +28,10 @@ const App = () => {
     }
 
     const handleSend = (value) => {
-        let chat = {date: "", text: value, username: state.userName}
+        let chat = {text: value, userName: state.userName}
        // socket.emit('chat', chat);
         //dispatch(postNewMessage(chat))
+        console.log("m ", chat)
         ws.sendMessage(chat);
     }
 

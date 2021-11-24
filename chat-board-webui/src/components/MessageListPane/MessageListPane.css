@@ -1,0 +1,7 @@
+.messages-list{
+    min-height: 500px
+}
+
+.messages-list ul {
+    list-style: none;
+}

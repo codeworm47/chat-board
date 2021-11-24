@@ -1,12 +1,12 @@
 import React from "react";
 import _ from "lodash"
 import MessageListItem from "../MessageListItem/MessageListItem"
-
+import "./MessageListPane.css"
 const MessageListPane = (props) => (
-    <div style={{minHeight: "500px"}} className="form-control">
+    <div className="form-control messages-list">
         <ul>
             {!_.isEmpty(props.messages) ? props.messages.map((msg, key) => (<MessageListItem key={key}
-                                                                                             messageUserName={msg.username}
+                                                                                             messageUserName={msg.userName}
                                                                                              text={msg.text}
                                                                                              date={msg.data}
                                                                                              userName={props.userName}

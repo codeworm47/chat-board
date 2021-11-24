@@ -14,13 +14,13 @@ export default ({children}) => {
     const dispatch = useDispatch();
 
     const sendMessage = (message) => {
-        console.log("sending message : ", {});
+        console.log("sending message : ", message);
         socket.emit("chat", message);
-        dispatch(receiveNewMessage(message));
+        //dispatch(receiveNewMessage(message));
     }
 
     if (!socket) {
-        socket = io.connect("ws://localhost:8080")
+        socket = io.connect("ws://localhost:9091")
 
         socket.on("chat", (msg) => {
             console.log("message received : ", msg)

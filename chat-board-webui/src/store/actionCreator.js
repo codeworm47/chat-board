@@ -8,7 +8,7 @@ import {
 export const fetchMessages = () => {
     return (dispatch) => {
         axios
-            .get("http://localhost:8080/messages")
+            .get("http://localhost:8888/messages")
             .then((response) => {
                 dispatch(fetchAllMessagesAction(response.data));
             })
