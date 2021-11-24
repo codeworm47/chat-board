@@ -8,7 +8,7 @@ const MessageListPane = (props) => (
             {!_.isEmpty(props.messages) ? props.messages.map((msg, key) => (<MessageListItem key={key}
                                                                                              messageUserName={msg.userName}
                                                                                              text={msg.text}
-                                                                                             date={msg.data}
+                                                                                             date={msg.date}
                                                                                              userName={props.userName}
 
 

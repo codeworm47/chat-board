@@ -13,8 +13,8 @@ public class MessageController {
     MessageService messageService;
 
     @GetMapping
-    public List<MessageViewModel> get(@RequestParam(required = false) int page) {
-        if (page > 0){
+    public List<MessageViewModel> get(@RequestParam(required = false) Integer page) {
+        if (page != null){
             return messageService.get(page);
         }
         return messageService.get();
