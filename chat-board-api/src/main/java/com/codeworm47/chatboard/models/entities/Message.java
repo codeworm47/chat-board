@@ -1,10 +1,12 @@
 package com.codeworm47.chatboard.models.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Message {
+public class Message implements Serializable {
+    private static final long serialVersionUID = 1099211092030048763L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

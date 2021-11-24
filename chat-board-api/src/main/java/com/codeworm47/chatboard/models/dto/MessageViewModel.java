@@ -1,8 +1,11 @@
 package com.codeworm47.chatboard.models.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MessageViewModel {
+public class MessageViewModel implements Serializable {
+    private static final long serialVersionUID = -877485449933377211L;
+
     private String id;
     private String userName;
     private String text;

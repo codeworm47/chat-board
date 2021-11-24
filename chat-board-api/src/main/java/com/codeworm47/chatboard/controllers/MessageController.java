@@ -1,44 +1,27 @@
 package com.codeworm47.chatboard.controllers;
 
-import com.codeworm47.chatboard.models.entities.Message;
-import com.codeworm47.chatboard.services.repository.MessageRepository;
+import com.codeworm47.chatboard.models.dto.MessageViewModel;
+import com.codeworm47.chatboard.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/messages")
 public class MessageController {
-
-    @Autowired
-    MessageRepository messageRepository;
+    MessageService messageService;
 
     @GetMapping
-    public Iterable<Message> get() {
-//        List<MessageViewModel> res = new ArrayList<>();
-//        ObjectMapper mapper = new ObjectMapper();
-//        messageRepository.findAll().forEach(m-> {
-//            res.add(mapper.convertValue(m, MessageViewModel.class));
-//        });
-//        return res;
-        var a = messageRepository.findAll();
-        return a;
+    public List<MessageViewModel> get(@RequestParam(required = false) int page) {
+        if (page > 0){
+            return messageService.get(page);
+        }
+        return messageService.get();
     }
 
-    @GetMapping(value = "/{id}")
-    public Message get(@PathVariable Long id) {
-//        List<MessageViewModel> res = new ArrayList<>();
-//        ObjectMapper mapper = new ObjectMapper();
-//        messageRepository.findAll().forEach(m-> {
-//            res.add(mapper.convertValue(m, MessageViewModel.class));
-//        });
-//        return res;
-        return messageRepository.findById(id).get();
+    @Autowired
+    public void setMessageService(MessageService messageService) {
+        this.messageService = messageService;
     }
-
-
-    @PostMapping
-    public Message create(@RequestBody Message message) {
-        return messageRepository.save(message);
-    }
-
 }

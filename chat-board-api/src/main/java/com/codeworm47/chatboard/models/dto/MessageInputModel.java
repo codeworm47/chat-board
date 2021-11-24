@@ -2,7 +2,11 @@ package com.codeworm47.chatboard.models.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class MessageInputModel {
+import java.io.Serializable;
+
+public class MessageInputModel implements Serializable {
+    private static final long serialVersionUID = -1080291503046639575L;
+
     String userName;
     String text;
 
@@ -29,8 +33,8 @@ public class MessageInputModel {
     public void setText(String text) {
         this.text = text;
     }
-    //@Override
-    //public String toString(){
-//        return new ObjectMapper().convertValue(this, MessageInputModel.class);
+//    @Override
+//    public String toString(){
+//        return String.format("{\"userName\": \"%s\", \"text\" : \"%s\"}", userName, text);
 //    }
 }

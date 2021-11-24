@@ -6,15 +6,11 @@ services:
     build:
       context: ./api
       dockerfile: ./Dockerfile
-#    command:
-#      - cd /app/target
-#      - java -jar chatboard-0.0.1-SNAPSHOT.jar
-#    env_file:
-#      - /root/tradepal/docker/app/.env
+    env_file:
+      - ./.env
     restart: always
     volumes:
       - ../chat-board-api:/app/
     ports:
       - "8888:8888"
-      - "8085:8085"
       - "9091:9091"
