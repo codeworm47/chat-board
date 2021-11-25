@@ -1,4 +1,5 @@
 # Simple Chat App with React/Redux, Java (Spring boot) and SocketIO
+![screenshot](./screenshot.png)
 
 # How to run :
 1. Clone the repo
