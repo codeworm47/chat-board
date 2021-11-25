@@ -6,16 +6,16 @@ import java.util.Date;
 public class MessageViewModel implements Serializable {
     private static final long serialVersionUID = -877485449933377211L;
 
-    private String id;
+    private int id;
     private String userName;
     private String text;
     private Date date;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

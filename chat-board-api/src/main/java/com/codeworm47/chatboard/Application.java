@@ -20,25 +20,8 @@ import java.util.Objects;
 public class Application {
 
     public static void main(String[] args) {
-        Logger logger = LogManager.getLogger(Application.class);
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-        ConfigurableEnvironment env = context.getEnvironment();
-        //ObjectMapper mapper = context.getBean(ObjectMapper.class);
-        MessageService messageService = context.getBean(MessageService.class);
 
-        Configuration config = new Configuration();
-        config.setHostname(env.getProperty(EnvironmentConstants.WEB_SOCKET_HOSTNAME_KEY));
-        config.setPort(Integer.parseInt(Objects.requireNonNull(env.getProperty(EnvironmentConstants.WEB_SOCKET_PORT_KEY))));
-
-        final SocketIOServer server = new SocketIOServer(config);
-        server.addConnectListener(client -> logger.info("A new client has connected -> {}", client.getSessionId()));
-        server.addDisconnectListener(client -> logger.info("Client has disconnected -> {}", client.getSessionId()));
-
-        server.addEventListener("chat", MessageInputModel.class, (client, data, ackRequest) -> {
-            logger.info("message received : {}", data);
-            MessageViewModel result = messageService.save(data);
-            server.getBroadcastOperations().sendEvent("chat", result);
-        });
-        server.start();
+        WebSocket.init(context);
     }
 }

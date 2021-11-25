@@ -11,6 +11,10 @@
     color: #BDC4CA;
 }
 
+.name .name-placeholder {
+    font-size: 24px;
+}
+
 .date{
     color: #BDC4CA;
 }

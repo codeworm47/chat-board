@@ -1,0 +1,13 @@
+.userName-model{
+
+}
+.userName-model .button-row{
+    display: flex;
+    width: 100% !important;
+    align-items: center;
+    flex-direction: column;
+}
+
+.userName-model .input-row{
+
+}

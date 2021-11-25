@@ -1,7 +1,7 @@
 import "./App.css";
 import MessageListPane from "./components/MessageListPane/MessageListPane";
 import Header from "./hoc/header/Header";
-import EditorPanel from "./components/EditorPanel/editorPanel";
+import EditorPanel from "./components/EditorPanel/EditorPanel";
 import UserNameModal from "./components/UserNameModal/UserNameModal"
 import {useDispatch, useSelector} from "react-redux";
 import {useState, useContext} from "react";
@@ -31,7 +31,6 @@ const App = () => {
         let chat = {text: value, userName: state.userName}
        // socket.emit('chat', chat);
         //dispatch(postNewMessage(chat))
-        console.log("m ", chat)
         ws.sendMessage(chat);
     }
 
@@ -48,11 +47,9 @@ const App = () => {
                 <Header title="Chat board"/>
             </Row>
             <Row>
-                <div className="col-9 bg-light p-2 border border-primary">
+                <div className="col-9 bg-light p-2 border wrapper">
                     <MessageListPane messages={state.data} userName={state.userName}/>
-                    <EditorPanel
-                        handleSend={handleSend}>
-                    </EditorPanel>
+                    <EditorPanel handleSend={handleSend} />
                 </div>
             </Row>
         </Container>

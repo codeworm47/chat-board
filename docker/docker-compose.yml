@@ -14,3 +14,16 @@ services:
     ports:
       - "8888:8888"
       - "9091:9091"
+  webui:
+    container_name: chatboard-webui
+    image: chatboard-webui:latest
+    build:
+      context: ../
+      dockerfile: ./docker/webui/Dockerfile
+    env_file:
+      - ./.env
+    restart: always
+    volumes:
+      - ../chat-board-webui:/app/
+    ports:
+      - "3001:3001"

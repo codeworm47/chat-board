@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./EditorPanel.css";
 
 const EditorPanel = (props) => {
   const [text, setText] = useState("");
@@ -13,26 +14,26 @@ const EditorPanel = (props) => {
     }
   };
   return (
-    <div className="input-group mb-3 p-2">
+    <div className="input-group mb-3 mt-3">
       <input
         value={text}
         onChange={(e) => handleChange(e)}
         onKeyPress={(e) => handleKeyPress(e)}
         type="text"
         className="form-control"
-        placeholder="Type..."
-        aria-label="Type..."
+        placeholder="Start typing..."
+        aria-label="Start typing..."
         aria-describedby="button-addon2"
       />
-      <div className="input-group-append">
+      <div className="input-group-append editor-input">
         <button
           disabled={text === ""}
           onClick={() => props.handleSend(text)}
-          className="btn btn-primary"
+          className="btn btn-primary editor-button"
           type="button"
           id="button-addon2"
         >
-          submit
+          Send
         </button>
       </div>
     </div>
