@@ -5,6 +5,7 @@
 1. Clone the repo
 2. Go to docker directory -> `cd docker`
 3. In terminal -> `docker-compose up` OR `docker-compose up -d`
+4. After docker build completed, you can access the web app at port 3001 -> `http://localhost:3001`
 
 # Useful Hints :
 
